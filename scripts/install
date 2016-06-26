@@ -36,9 +36,9 @@ src_path=/var/www/$app
 sudo mkdir -p $src_path
 sudo wget -P "$src_path" http://projekte.textmulch.de/bicbucstriim/downloads/BicBucStriim-1.3.6.zip -O "$src_path"/bbs.zip
 sudo unzip "$src_path"/bbs.zip -d "$src_path"
-sudo cp -R "$src_path"/static-laverna-gh-pages/* "$src_path"
-sudo rm "$src_path"/laverna.zip
-sudo rm -rf "$src_path"/static-laverna-gh-pages
+sudo cp -R "$src_path"/BicBucStriim-1.3.6/* "$src_path"
+sudo rm "$src_path"/bbs.zip
+sudo rm -rf "$src_path"/BicBucStriim-1.3.6
 
 # Set permissions to app files
 sudo chown -R root: $src_path
