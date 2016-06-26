@@ -1,6 +1,6 @@
 {
-    "name": "Laverna",
-    "id": "laverna",
+    "name": "BicBucStriim",
+    "id": "bicbucstriim",
     "packaging_format": 1,
     "description": {
         "en": "Laverna is a JavaScript note taking application with Markdown editor and encryption support. Consider it like open source alternative to Evernote.",
@@ -40,8 +40,8 @@
                     "en": "Choose a path for Laverna",
                     "fr": "Choisissez un chemin pour Laverna"
                 },
-                "example": "/laverna",
-                "default": "/laverna"
+                "example": "/bbs",
+                "default": "/bbs"
             },
             {
                 "name": "admin",
