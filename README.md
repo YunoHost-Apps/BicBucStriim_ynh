@@ -1,4 +1,4 @@
-#H4 BicBucStriim 1.3.6 package for Yunohost
+BicBucStriim 1.3.6 package for Yunohost
 -------------
 
 BicBucStriim streams books, digital books. It fills a gap in the functionality of current NAS devices that provide access to music, videos and photos -- but not books. BicBucStriim fills this gap and provides web-based access to your e-book collection.
