@@ -35,7 +35,7 @@ sudo yunohost app checkurl "${domain}${path}" -a "$app" \
 src_path=/var/www/$app
 sudo mkdir -p $src_path
 sudo wget -P "$src_path" http://projekte.textmulch.de/bicbucstriim/downloads/BicBucStriim-1.3.6.zip -O "$src_path"/bbs.zip
-sudo unzip "$src_path"/bbs.zip -d "$src_path"
+sudo unzip -q "$src_path"/bbs.zip -d "$src_path"
 sudo cp -R "$src_path"/BicBucStriim-1.3.6/* "$src_path"
 sudo rm "$src_path"/bbs.zip
 sudo rm -rf "$src_path"/BicBucStriim-1.3.6
