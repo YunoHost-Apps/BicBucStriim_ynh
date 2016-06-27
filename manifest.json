@@ -4,7 +4,7 @@
     "packaging_format": 1,
     "description": {
         "en": "BicBucStriim streams books, digital books, providing web-based access to your e-book collection.",
-        "fr": "BicBucStriim streams books, digital books, providing web-based access to your e-book collection."
+        "fr": "BicBucStriim est une interface web pour accéder à votre collection d'e-book."
     },
     "url": "http://projekte.textmulch.de/bicbucstriim/",
     "license": "free",
