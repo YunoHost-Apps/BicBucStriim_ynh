@@ -59,3 +59,4 @@ fi
 
 # Reload services
 sudo service nginx reload
+echo "Open $domain/$app/installcheck.php for troubleshooting guide."
