@@ -53,6 +53,15 @@
                 "example": "johndoe"
             },
             {
+                "name": "login",
+                "type": "boolean",
+                "ask": {
+                    "en": "Disable BicBucStriim login ?",
+                    "fr": "Désactiver l'authentification BicBucStriim ?"
+                },
+                "default": true
+            },
+            {
                 "name": "is_public",
                 "type": "boolean",
                 "ask": {
