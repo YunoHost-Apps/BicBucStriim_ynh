@@ -43,7 +43,7 @@ sudo rm -rf "$src_path"/BicBucStriim-1.3.6
 
 # Disable BicBucStriim login if checked
 if [[ $login -eq 1 ]]; then
-  sudo sed -i -- 's/[LOGIN_REQUIRED] = 1/[LOGIN_REQUIRED] = 0/g' "$src_path"/index.php
+  sudo sed -i -- 's/\[LOGIN_REQUIRED\] = 1/\[LOGIN_REQUIRED\] = 0/g' "$src_path"/index.php
 fi
 
 # Set permissions to app files
