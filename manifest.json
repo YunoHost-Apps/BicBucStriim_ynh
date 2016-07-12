@@ -1,6 +1,6 @@
 {
     "name": "BicBucStriim",
-    "id": "bbs",
+    "id": "bicbucstriim",
     "packaging_format": 1,
     "description": {
         "en": "BicBucStriim streams books, digital books, providing web-based access to your e-book collection.",
@@ -51,6 +51,15 @@
                     "fr": "Choisissez l’administrateur"
                 },
                 "example": "johndoe"
+            },
+            {
+                "name": "login",
+                "type": "boolean",
+                "ask": {
+                    "en": "Disable BicBucStriim login ?",
+                    "fr": "Désactiver l'authentification BicBucStriim ?"
+                },
+                "default": true
             },
             {
                 "name": "is_public",
