@@ -59,7 +59,7 @@
                     "en": "Disable BicBucStriim login ?",
                     "fr": "Désactiver l'authentification BicBucStriim ?"
                 },
-                "default": true
+                "default": false
             },
             {
                 "name": "is_public",
