@@ -30,7 +30,8 @@ sudo cp -a ./data "$books_path"
 
 # Restore permissions to app files
 # you may need to make some file and/or directory writeable by www-data (nginx user)
-sudo chown -R root: "$src_path" "${src_path}_library"
+sudo chown -R root: "$src_path"
+sudo chown -R $admin "$books_path"
 
 ### MySQL (remove if not used) ###
 # If a MySQL database is used:

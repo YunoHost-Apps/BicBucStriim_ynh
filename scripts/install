@@ -58,6 +58,7 @@ fi
 # Set permissions to app files
 sudo chown -R root: $src_path
 sudo chmod -R ga+w $src_path/data
+sudo chown -R $admin "$books_path"
 
 cp password.php $src_path/ynh_password.php
 cd $src_path
