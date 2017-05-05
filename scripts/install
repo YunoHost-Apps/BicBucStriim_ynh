@@ -86,6 +86,8 @@ sudo cp $nginx_conf /etc/nginx/conf.d/$domain.d/$app.conf
 if [[ $is_public -eq 1 ]]; then
   # unprotected_uris allows SSO credentials to be passed anyway.
   ynh_app_setting_set "$app" unprotected_uris "/"
+else
+  ynh_app_setting_set "$app" skipped_uris "/img/,/js/,/style/"
 fi
 
 # Reload services
