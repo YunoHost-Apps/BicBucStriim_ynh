@@ -9,8 +9,12 @@ source /usr/share/yunohost/helpers
 # Retrieve app settings
 domain=$(ynh_app_setting_get "$app" domain)
 
+# Remove php5-sqlite dependency
+ynh_package_remove php5-sqlite
+
 # Remove sources
 sudo rm -rf /var/www/$app
+sudo rm -rf /var/www/${app}_library
 
 # Remove nginx configuration file
 sudo rm -f /etc/nginx/conf.d/$domain.d/$app.conf
