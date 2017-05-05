@@ -20,6 +20,7 @@ path=$YNH_APP_ARG_PATH
 admin=$YNH_APP_ARG_ADMIN
 is_public=$YNH_APP_ARG_IS_PUBLIC
 login=$YNH_APP_ARG_LOGIN
+admin_pwd=$YNH_APP_ARG_ADMIN_PWD
 
 # Source YunoHost helpers
 source /usr/share/yunohost/helpers
@@ -58,12 +59,20 @@ fi
 sudo chown -R root: $src_path
 sudo chmod -R ga+w $src_path/data
 
+cp password.php $src_path/ynh_password.php
+cd $src_path
+hash=$(php ynh_password.php $admin_pwd)
+rm ynh_password.php
+cd -
+mail=$(ynh_user_get_info $admin mail)
 if ! ynh_package_is_installed "sqlite3" ; then
     ynh_package_install sqlite3
     echo "INSERT INTO config (name, val) VALUES ('calibre_dir', '/var/www/bicbucstriim_library');" | sqlite3 $src_path/data/data.db
+    echo "UPDATE user SET username = '$admin', password = '$hash', email='$mail' WHERE id = 1;" | sqlite3 $src_path/data/data.db
     ynh_package_remove sqlite3
 else
     echo "INSERT INTO config (name, val) VALUES ('calibre_dir', '/var/www/bicbucstriim_library');" | sqlite3 $src_path/data/data.db
+    echo "UPDATE user SET username = '$admin', password = '$hash', email='$mail' WHERE id = 1;" | sqlite3 $src_path/data/data.db
 fi
 
 # Modify Nginx configuration file and copy it to Nginx conf directory
@@ -81,4 +90,3 @@ fi
 # Reload services
 sudo service nginx reload
 echo "Open $domain$path/installcheck.php for troubleshooting guide."
-echo "Default login and password are admin/admin. Change it!"
