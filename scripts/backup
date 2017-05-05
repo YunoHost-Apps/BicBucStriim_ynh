@@ -12,6 +12,7 @@ source /usr/share/yunohost/helpers
 # Backup sources & data
 # Note: the last argument is where to save this path, see the restore script.
 ynh_backup "/var/www/${app}" "sources"
+ynh_backup "/var/www/${app}_library" "data"
 
 ### MySQL (remove if not used) ###
 # If a MySQL database is used:

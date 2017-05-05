@@ -23,10 +23,11 @@ sudo yunohost app checkurl "${domain}${path}" -a "$app" \
 # Restore sources & data
 src_path="/var/www/${app}"
 sudo cp -a ./sources "$src_path"
+sudo cp -a ./data "${src_path}_library"
 
 # Restore permissions to app files
 # you may need to make some file and/or directory writeable by www-data (nginx user)
-sudo chown -R root: "$src_path"
+sudo chown -R root: "$src_path" "${src_path}_library"
 
 ### MySQL (remove if not used) ###
 # If a MySQL database is used:
