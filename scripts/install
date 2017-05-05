@@ -47,7 +47,7 @@ sudo cp -R "$src_path"/BicBucStriim-1.3.6/* "$src_path"
 sudo rm "$src_path"/bbs.zip
 sudo rm -rf "$src_path"/BicBucStriim-1.3.6
 
-books_path=${src_path}_library
+books_path=/home/$admin/calibre_library
 cp -r ../empty_library $books_path
 
 # Disable BicBucStriim login if checked
@@ -67,11 +67,11 @@ cd -
 mail=$(ynh_user_get_info $admin mail)
 if ! ynh_package_is_installed "sqlite3" ; then
     ynh_package_install sqlite3
-    echo "INSERT INTO config (name, val) VALUES ('calibre_dir', '/var/www/bicbucstriim_library');" | sqlite3 $src_path/data/data.db
+    echo "INSERT INTO config (name, val) VALUES ('calibre_dir', '$books_path');" | sqlite3 $src_path/data/data.db
     echo "UPDATE user SET username = '$admin', password = '$hash', email='$mail' WHERE id = 1;" | sqlite3 $src_path/data/data.db
     ynh_package_remove sqlite3
 else
-    echo "INSERT INTO config (name, val) VALUES ('calibre_dir', '/var/www/bicbucstriim_library');" | sqlite3 $src_path/data/data.db
+    echo "INSERT INTO config (name, val) VALUES ('calibre_dir', '$books_path');" | sqlite3 $src_path/data/data.db
     echo "UPDATE user SET username = '$admin', password = '$hash', email='$mail' WHERE id = 1;" | sqlite3 $src_path/data/data.db
 fi
 
