@@ -15,6 +15,7 @@ source /usr/share/yunohost/helpers
 # Retrieve old app settings
 domain=$(ynh_app_setting_get "$app" domain)
 path=$(ynh_app_setting_get "$app" path)
+admin=$(ynh_app_setting_get "$app" admin)
 
 # Check domain/path availability
 sudo yunohost app checkurl "${domain}${path}" -a "$app" \
@@ -24,9 +25,13 @@ sudo yunohost app checkurl "${domain}${path}" -a "$app" \
 src_path="/var/www/${app}"
 sudo cp -a ./sources "$src_path"
 
+books_path=/home/$admin/calibre_library
+sudo cp -a ./data "$books_path"
+
 # Restore permissions to app files
 # you may need to make some file and/or directory writeable by www-data (nginx user)
 sudo chown -R root: "$src_path"
+sudo chown -R $admin "$books_path"
 
 ### MySQL (remove if not used) ###
 # If a MySQL database is used:
