@@ -56,7 +56,7 @@ ynh_restore_file --origin_path="$final_path"
 #=================================================
 
 # you may need to make some file and/or directory writeable by www-data (nginx user)
-chown -R root: "$src_path"
+chown -R root: "$final_path"
 chown -R $admin "$books_path"
 
 #=================================================
@@ -70,9 +70,9 @@ ynh_add_fpm_config --phpversion=$YNH_PHP_VERSION --package="$extra_php_dependenc
 
 
 
-# Restore sources & data
-src_path="/var/www/${app}"
-cp -a ./sources "$src_path"
+# # Restore sources & data
+# src_path="/var/www/${app}"
+# cp -a ./sources "$src_path"
 
 books_path=/home/$admin/calibre_library
 cp -a ./data "$books_path"

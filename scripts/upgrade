@@ -77,8 +77,6 @@ then
 	ynh_setup_source --dest_dir="$final_path"
 fi
 
-
-
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
@@ -116,10 +114,11 @@ ynh_add_fpm_config --phpversion=$YNH_PHP_VERSION --package="$extra_php_dependenc
 #=================================================
 # SECURE FILES AND DIRECTORIES
 #=================================================
+books_path=/home/$admin/calibre_library
 
 # Set permissions to app files
-chown -R root: $src_path
-#chmod -R ga+w $src_path/data
+chown -R root: $final_path
+#chmod -R ga+w $final_path/data
 #chown -R $admin "$books_path"
 
 #=================================================
