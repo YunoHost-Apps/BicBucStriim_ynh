@@ -127,16 +127,16 @@ cd $final_path
 hash=$(php ynh_password.php $admin_pwd)
 rm ynh_password.php
 cd -
-mail=$(ynh_user_get_info $admin mail)
-# if ! ynh_package_is_installed "sqlite3" ; then
-#     ynh_package_install sqlite3
+# mail=$(ynh_user_get_info $admin mail)
+# # if ! ynh_package_is_installed "sqlite3" ; then
+# #     ynh_package_install sqlite3
+# #     echo "INSERT INTO config (name, val) VALUES ('calibre_dir', '$books_path');" | sqlite3 $final_path/data/data.db
+# #     echo "UPDATE user SET username = '$admin', password = '$hash', email='$mail' WHERE id = 1;" | sqlite3 $final_path/data/data.db
+# #     ynh_package_remove sqlite3
+# # else
 #     echo "INSERT INTO config (name, val) VALUES ('calibre_dir', '$books_path');" | sqlite3 $final_path/data/data.db
 #     echo "UPDATE user SET username = '$admin', password = '$hash', email='$mail' WHERE id = 1;" | sqlite3 $final_path/data/data.db
-#     ynh_package_remove sqlite3
-# else
-    echo "INSERT INTO config (name, val) VALUES ('calibre_dir', '$books_path');" | sqlite3 $final_path/data/data.db
-    echo "UPDATE user SET username = '$admin', password = '$hash', email='$mail' WHERE id = 1;" | sqlite3 $final_path/data/data.db
-# fi
+# # fi
 
 #=================================================
 # SETUP SSOWAT
