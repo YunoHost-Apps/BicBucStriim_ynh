@@ -1,17 +1,25 @@
 #!/bin/bash
 
-# Exit on command errors and treat unset variables as an error
-set -eu
+#=================================================
+# GENERIC START
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
 
-# The id of the app as stated in the manifest is available as $YNH_APP_ID
-# The instance number is available as $YNH_APP_INSTANCE_NUMBER (equals "1", "2", ...)
-# The app instance name is available as $YNH_APP_INSTANCE_NAME
-#    - the first time the app is installed, YNH_APP_INSTANCE_NAME = ynhexample
-#    - the second time the app is installed, YNH_APP_INSTANCE_NAME = ynhexample__2
-#    - ynhexample__{N} for the subsequent installations, with N=3,4, ...
-# The app instance name is probably what you are interested the most, since this is
-# guaranteed to be unique. This is a good unique identifier to define installation path,
-# db names, ...
+source _common.sh
+source /usr/share/yunohost/helpers
+
+#=================================================
+# MANAGE SCRIPT FAILURE
+#=================================================
+
+# Exit if an error occurs during the execution of the script
+ynh_abort_if_errors
+
+#=================================================
+# RETRIEVE ARGUMENTS FROM THE MANIFEST
+#=================================================
+
 app=$YNH_APP_INSTANCE_NAME
 
 # Retrieve arguments
@@ -22,43 +30,75 @@ is_public=$YNH_APP_ARG_IS_PUBLIC
 login=$YNH_APP_ARG_LOGIN
 admin_pwd=$YNH_APP_ARG_ADMIN_PWD
 
-# Source YunoHost helpers
-source /usr/share/yunohost/helpers
+#=================================================
+# CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
+#=================================================
+ynh_script_progression --message="Validating installation parameters..." --weight=1
 
-# Save app settings
-ynh_app_setting_set "$app" admin "$admin"
-ynh_app_setting_set "$app" is_public "$is_public"
+final_path=/var/www/$app
+test ! -e "$final_path" || ynh_die "This path already contains a folder"
 
-# Check domain/path availability
-sudo yunohost app checkurl "${domain}${path}" -a "$app" \
-    || ynh_die "Path not available: ${domain}${path}"
+# Normalize the url path syntax
+path_url=$(ynh_normalize_url_path $path_url)
 
-# Install dependencies
-if ! ynh_package_is_installed "php5-sqlite" ; then
-    ynh_package_install php5-sqlite
-fi
+# Register (book) web path
+ynh_webpath_register --app=$app --domain=$domain --path_url=$path_url
+
+#=================================================
+# STORE SETTINGS FROM MANIFEST
+#=================================================
+ynh_script_progression --message="Storing installation settings..." --weight=1
+
+ynh_app_setting_set --app=$app --key=domain --value=$domain
+ynh_app_setting_set --app=$app --key=path --value=$path_url
+ynh_app_setting_set --app=$app --key=admin --value=$admin
+ynh_app_setting_set --app=$app --key=is_public --value=$is_public
+
+#=================================================
+# DOWNLOAD, CHECK AND UNPACK SOURCE
+#=================================================
+ynh_script_progression --message="Setting up source files..." --weight=7
+
+ynh_app_setting_set --app=$app --key=final_path --value=$final_path
+# Download, check integrity, uncompress and patch the source from app.src
+#ynh_setup_source --dest_dir="$final_path"
 
 # Copy source files
-src_path=/var/www/$app
-sudo mkdir -p $src_path
-sudo wget -q -P "$src_path" http://projekte.textmulch.de/bicbucstriim/downloads/BicBucStriim-1.3.6.zip -O "$src_path"/bbs.zip
-sudo unzip -q "$src_path"/bbs.zip -d "$src_path"
-sudo cp -R "$src_path"/BicBucStriim-1.3.6/* "$src_path"
-sudo rm "$src_path"/bbs.zip
-sudo rm -rf "$src_path"/BicBucStriim-1.3.6
+#src_path=/var/www/$app
+mkdir -p $final_path
+wget -q -P "$final_path" http://projekte.textmulch.de/bicbucstriim/downloads/BicBucStriim-1.3.6.zip -O "$final_path"/bbs.zip
+unzip -q "$final_path"/bbs.zip -d "$final_path"
+cp -R "$final_path"/BicBucStriim-1.3.6/* "$final_path"
+rm "$final_path"/bbs.zip
+rm -rf "$final_path"/BicBucStriim-1.3.6
+
+#=================================================
+# NGINX CONFIGURATION
+#=================================================
+ynh_script_progression --message="Configuring NGINX web server..." --weight=2
+
+# Create a dedicated NGINX config
+ynh_add_nginx_config
+
+
 
 books_path=/home/$admin/calibre_library
 cp -r ../empty_library $books_path
 
 # Disable BicBucStriim login if checked
 if [[ $login -eq 1 ]]; then
-  sudo sed -i -- 's/\[LOGIN_REQUIRED\] = 1/\[LOGIN_REQUIRED\] = 0/g' "$src_path"/index.php
+  sed -i -- 's/\[LOGIN_REQUIRED\] = 1/\[LOGIN_REQUIRED\] = 0/g' "$src_path"/index.php
 fi
 
+#=================================================
+# SECURE FILES AND DIRECTORIES
+#=================================================
+
 # Set permissions to app files
-sudo chown -R root: $src_path
-sudo chmod -R ga+w $src_path/data
-sudo chown -R $admin "$books_path"
+chown -R root: $src_path
+chmod -R ga+w $src_path/data
+chown -R $admin "$books_path"
+
 
 cp password.php $src_path/ynh_password.php
 cd $src_path
@@ -76,11 +116,10 @@ else
     echo "UPDATE user SET username = '$admin', password = '$hash', email='$mail' WHERE id = 1;" | sqlite3 $src_path/data/data.db
 fi
 
-# Modify Nginx configuration file and copy it to Nginx conf directory
-nginx_conf=../conf/nginx.conf
-sed -i "s@YNH_WWW_PATH@$path@g" $nginx_conf
-sed -i "s@YNH_WWW_ALIAS@$src_path/@g" $nginx_conf
-sudo cp $nginx_conf /etc/nginx/conf.d/$domain.d/$app.conf
+#=================================================
+# SETUP SSOWAT
+#=================================================
+ynh_script_progression --message="Configuring SSOwat..." --weight=1
 
 # If app is public, add url to SSOWat conf as skipped_uris
 if [[ $is_public -eq 1 ]]; then
@@ -90,6 +129,15 @@ else
   ynh_app_setting_set "$app" skipped_uris "/img/,/js/,/style/"
 fi
 
-# Reload services
-sudo service nginx reload
-echo "Open $domain$path/installcheck.php for troubleshooting guide."
+#=================================================
+# RELOAD NGINX
+#=================================================
+ynh_script_progression --message="Reloading NGINX web server..." --weight=2
+
+ynh_systemd_action --service_name=nginx --action=reload
+
+#=================================================
+# END OF SCRIPT
+#=================================================
+
+ynh_script_progression --message="Installation of $app completed" --last
