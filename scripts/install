@@ -80,7 +80,20 @@ ynh_script_progression --message="Configuring NGINX web server..." --weight=2
 # Create a dedicated NGINX config
 ynh_add_nginx_config
 
+#=================================================
+# PHP-FPM CONFIGURATION
+#=================================================
+ynh_script_progression --message="Configuring PHP-FPM..." --weight=2
 
+# Create a dedicated PHP-FPM config
+ynh_add_fpm_config --phpversion=$YNH_PHP_VERSION --package="$extra_php_dependencies"
+phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
+
+#=================================================
+# SPECIFIC SETUP
+#=================================================
+# CONFIGURE BICBUCSTRIIM
+#=================================================
 
 books_path=/home/$admin/calibre_library
 cp -r ../empty_library $books_path
