@@ -24,7 +24,8 @@ app=$YNH_APP_INSTANCE_NAME
 
 # Retrieve arguments
 domain=$YNH_APP_ARG_DOMAIN
-path=$YNH_APP_ARG_PATH
+path_url=$YNH_APP_ARG_PATH
+#path=$YNH_APP_ARG_PATH
 admin=$YNH_APP_ARG_ADMIN
 is_public=$YNH_APP_ARG_IS_PUBLIC
 login=$YNH_APP_ARG_LOGIN
@@ -61,16 +62,16 @@ ynh_script_progression --message="Setting up source files..." --weight=7
 
 ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 # Download, check integrity, uncompress and patch the source from app.src
-#ynh_setup_source --dest_dir="$final_path"
+ynh_setup_source --dest_dir="$final_path"
 
-# Copy source files
-#src_path=/var/www/$app
-mkdir -p $final_path
-wget -q -P "$final_path" http://projekte.textmulch.de/bicbucstriim/downloads/BicBucStriim-1.3.6.zip -O "$final_path"/bbs.zip
-unzip -q "$final_path"/bbs.zip -d "$final_path"
-cp -R "$final_path"/BicBucStriim-1.3.6/* "$final_path"
-rm "$final_path"/bbs.zip
-rm -rf "$final_path"/BicBucStriim-1.3.6
+# # Copy source files
+# #src_path=/var/www/$app
+# mkdir -p $final_path
+# wget -q -P "$final_path" http://projekte.textmulch.de/bicbucstriim/downloads/BicBucStriim-1.3.6.zip -O "$final_path"/bbs.zip
+# unzip -q "$final_path"/bbs.zip -d "$final_path"
+# cp -R "$final_path"/BicBucStriim-1.3.6/* "$final_path"
+# rm "$final_path"/bbs.zip
+# rm -rf "$final_path"/BicBucStriim-1.3.6
 
 #=================================================
 # NGINX CONFIGURATION
