@@ -6,6 +6,7 @@
         "en": "BicBucStriim streams books, digital books, providing web-based access to your e-book collection.",
         "fr": "BicBucStriim est une interface web pour accéder à votre collection d'e-book."
     },
+    "version": "1.3.6~ynh1",
     "url": "http://projekte.textmulch.de/bicbucstriim/",
     "license": "free",
     "maintainer": {
@@ -14,7 +15,7 @@
         "url": "https://github.com/YunoHost-Apps/BicBucStriim_ynh"
     },
     "requirements": {
-        "yunohost": ">> 2.4.0"
+        "yunohost": ">> 3.8.1"
     },
     "multi_instance": true,
     "services": [
@@ -64,7 +65,7 @@
                 "name": "login",
                 "type": "boolean",
                 "ask": {
-                    "en": "Disable BicBucStriim login ?",
+                    "en": "Disable BicBucStriim login?",
                     "fr": "Désactiver l'authentification BicBucStriim ?"
                 },
                 "default": true
