@@ -8,6 +8,14 @@
     },
     "version": "1.5.3~ynh1",
     "url": "http://projekte.textmulch.de/bicbucstriim/",
+    "upstream": {
+        "license": "MIT",
+        "website": "http://projekte.textmulch.de/bicbucstriim/",
+        "demo": "https://demo.example.com",
+        "admindoc": "https://yunohost.org/packaging_apps",
+        "userdoc": "https://yunohost.org/apps",
+        "code": "https://github.com/rvolz/BicBucStriim"
+    },
     "license": "MIT",
     "maintainer": {
         "name": "Alex",
