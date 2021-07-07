@@ -1,59 +1,118 @@
 #!/bin/bash
 
-# Exit on command errors and treat unset variables as an error
-set -eu
+#=================================================
+# GENERIC START
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
 
-# See comments in install script
-app=$YNH_APP_INSTANCE_NAME
-
-# Source YunoHost helpers
+source _common.sh
 source /usr/share/yunohost/helpers
 
-# Retrieve app settings
+#=================================================
+# LOAD SETTINGS
+#=================================================
+ynh_script_progression --message="Loading installation settings..." --weight=1
+
+app=$YNH_APP_INSTANCE_NAME
+
 domain=$(ynh_app_setting_get "$app" domain)
-path=$(ynh_app_setting_get "$app" path)
-admin=$(ynh_app_setting_get "$app" admin)
-is_public=$(ynh_app_setting_get "$app" is_public)
-language=$(ynh_app_setting_get "$app" language)
+final_path=$(ynh_app_setting_get --app=$app --key=final_path)
+path_url=$(ynh_app_setting_get --app=$app --key=path)
+phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 
-# Remove trailing "/" for next commands
-path=${path%/}
+#=================================================
+# CHECK VERSION
+#=================================================
 
-# Copy source files
-src_path=/var/www/$app
-sudo mkdir -p $src_path
-sudo cp -a ../sources/. $src_path
+upgrade_type=$(ynh_check_app_version_changed)
 
-# Set permissions to app files
-# you may need to make some file and/or directory writeable by www-data (nginx user)
-sudo chown -R root: $src_path
+#=================================================
+# BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
+#=================================================
+ynh_script_progression --message="Backing up $app before upgrading (may take a while)..." --weight=7
 
-# Modify Nginx configuration file and copy it to Nginx conf directory
-nginx_conf=../conf/nginx.conf
-sed -i "s@YNH_WWW_PATH@$path@g" $nginx_conf
-sed -i "s@YNH_WWW_ALIAS@$src_path/@g" $nginx_conf
-# If a dedicated php-fpm process is used:
-#
-# sed -i "s@YNH_WWW_APP@$app@g" $nginx_conf
-sudo cp $nginx_conf /etc/nginx/conf.d/$domain.d/$app.conf
+# Backup the current version of the app
+ynh_backup_before_upgrade
+ynh_clean_setup () {
+	# restore it if the upgrade fails
+	ynh_restore_upgradebackup
+}
+# Exit if an error occurs during the execution of the script
+ynh_abort_if_errors
 
-### PHP (remove if not used) ###
-# If a dedicated php-fpm process is used:
-# # Modify PHP-FPM pool configuration and copy it to the pool directory
-# sed -i "s@YNH_WWW_APP@$app@g" ../conf/php-fpm.conf
-# sed -i "s@YNH_WWW_ALIAS@$src_path/@g" ../conf/php-fpm.conf
-# finalphpconf=/etc/php5/fpm/pool.d/$app.conf
-# sudo cp ../conf/php-fpm.conf $finalphpconf
-# sudo chown root: $finalphpconf
-# sudo chmod 644 $finalphpconf
-# sudo service php5-fpm restart
-### PHP end ###
+#=================================================
+# ENSURE DOWNWARD COMPATIBILITY
+#=================================================
+ynh_script_progression --message="Ensuring downward compatibility..." --weight=2
 
-# If app is public, add url to SSOWat conf as skipped_uris
-if [[ $is_public -eq 1 ]]; then
-  # See install script
-  ynh_app_setting_set "$app" unprotected_uris "/"
+# If final_path doesn't exist, create it
+if [ -z "$final_path" ]; then
+	final_path=/var/www/$app
+	ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 fi
 
-# Reload nginx service
-sudo service nginx reload
+# Cleaning legacy permissions
+if ynh_legacy_permissions_exists; then
+	ynh_legacy_permissions_delete_all
+
+	ynh_app_setting_delete --app=$app --key=is_public
+fi
+
+#=================================================
+# CREATE DEDICATED USER
+#=================================================
+ynh_script_progression --message="Configuring system user..." --weight=1
+
+# Create a system user
+ynh_system_user_create --username=$app --home_dir="$final_path"
+
+#=================================================
+# STANDARD UPGRADE STEPS
+#=================================================
+# DOWNLOAD, CHECK AND UNPACK SOURCE
+#=================================================
+
+if [ "$upgrade_type" == "UPGRADE_APP" ]
+then
+	ynh_script_progression --message="Upgrading source files..." --weight=7
+
+	# Download, check integrity, uncompress and patch the source from app.src
+	ynh_setup_source --dest_dir="$final_path"
+fi
+
+chmod 750 "$final_path"
+chmod -R o-rwx "$final_path"
+chown -R $app:www-data "$final_path"
+chmod -R ga+w "$final_path/data"
+
+#=================================================
+# NGINX CONFIGURATION
+#=================================================
+ynh_script_progression --message="Configuring NGINX web server..." --weight=2
+
+# Create a dedicated NGINX config
+ynh_add_nginx_config
+
+#=================================================
+# PHP-FPM CONFIGURATION
+#=================================================
+ynh_script_progression --message="Upgrading PHP-FPM configuration..." --weight=2
+
+# Create a dedicated PHP-FPM config
+ynh_add_fpm_config --package="$extra_php_dependencies"
+
+#=================================================
+# GENERIC FINALIZATION
+#=================================================
+# RELOAD NGINX
+#=================================================
+ynh_script_progression --message="Reloading NGINX web server..." --weight=2
+
+ynh_systemd_action --service_name=nginx --action=reload
+
+#=================================================
+# END OF SCRIPT
+#=================================================
+
+ynh_script_progression --message="Upgrade of $app completed" --last
