@@ -98,10 +98,6 @@ chmod 750 "$datadir"
 chmod -R o-rwx "$datadir"
 chown -R $app:www-data "$datadir"
 
-# # Restore sources & data
-# src_path="/var/www/${app}"
-# cp -a ./sources "$src_path"
-
 books_path=/home/$admin/calibre_library
 cp -a ./data "$books_path"
 
