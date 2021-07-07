@@ -83,13 +83,25 @@ ynh_restore_file --origin_path="/etc/php/$phpversion/fpm/pool.d/$app.conf"
 ynh_add_fpm_config --package="$extra_php_dependencies"
 
 
+#=================================================
+# RESTORE THE DATA DIRECTORY
+#=================================================
+ynh_script_progression --message="Restoring the data directory..." --time --weight=1
+
+ynh_restore_file --origin_path="$datadir" --not_mandatory
+
+mkdir -p $datadir
+
+chmod 750 "$datadir"
+chmod -R o-rwx "$datadir"
+chown -R $app:www-data "$datadir"
+
 # # Restore sources & data
 # src_path="/var/www/${app}"
 # cp -a ./sources "$src_path"
 
 books_path=/home/$admin/calibre_library
 cp -a ./data "$books_path"
-
 
 #=================================================
 # GENERIC FINALIZATION
