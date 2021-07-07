@@ -1,10 +1,10 @@
 ;; Nom du test
 	; Manifest
-		domain="domain.tld"	(DOMAIN)
-		path="/path"	    (PATH)
-		admin="john"	    (USER)
-		is_public=1	        (PUBLIC|public=1|private=0)
-		admin_pwd="pass"
+		domain="domain.tld"
+		path="/path"
+		admin="john"
+		is_public=1
+		admin_pwd="password-strong"
 		login=1
 	; Checks
 		pkg_linter=1
@@ -16,11 +16,7 @@
 		upgrade=1
 		backup_restore=1
 		multi_instance=1
-		incorrect_path=1
-		port_already_use=0
 		change_url=1
-;;; Levels
-	Level 5=auto
 ;;; Options
 Email=
 Notification=none

@@ -12,7 +12,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 # LOAD SETTINGS
 #=================================================
-ynh_script_progression --message="Loading installation settings..."  --weight=1
+ynh_script_progression --message="Loading installation settings..." --weight=1
 
 app=$YNH_APP_INSTANCE_NAME
 
@@ -21,29 +21,13 @@ path=$(ynh_app_setting_get "$app" path)
 admin=$(ynh_app_setting_get "$app" admin)
 is_public=$(ynh_app_setting_get "$app" is_public)
 language=$(ynh_app_setting_get "$app" language)
+phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 
 #=================================================
 # CHECK VERSION
 #=================================================
 
 upgrade_type=$(ynh_check_app_version_changed)
-
-#=================================================
-# ENSURE DOWNWARD COMPATIBILITY
-#=================================================
-ynh_script_progression --message="Ensuring downward compatibility..."  --weight=2
-
-# If final_path doesn't exist, create it
-if [ -z "$final_path" ]; then
-	final_path=/var/www/$app
-	ynh_app_setting_set --app=$app --key=final_path --value=$final_path
-fi
-
-# If db_name doesn't exist, create it
-if [ -z "$db_name" ]; then
-	db_name=$(ynh_sanitize_dbid --db_name=$app)
-	ynh_app_setting_set --app=$app --key=db_name --value=$db_name
-fi
 
 #=================================================
 # BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
@@ -58,6 +42,38 @@ ynh_clean_setup () {
 }
 # Exit if an error occurs during the execution of the script
 ynh_abort_if_errors
+
+#=================================================
+# ENSURE DOWNWARD COMPATIBILITY
+#=================================================
+ynh_script_progression --message="Ensuring downward compatibility..." --weight=2
+
+# If final_path doesn't exist, create it
+if [ -z "$final_path" ]; then
+	final_path=/var/www/$app
+	ynh_app_setting_set --app=$app --key=final_path --value=$final_path
+fi
+
+# If db_name doesn't exist, create it
+if [ -z "$db_name" ]; then
+	db_name=$(ynh_sanitize_dbid --db_name=$app)
+	ynh_app_setting_set --app=$app --key=db_name --value=$db_name
+fi
+
+# Cleaning legacy permissions
+if ynh_legacy_permissions_exists; then
+	ynh_legacy_permissions_delete_all
+
+	ynh_app_setting_delete --app=$app --key=is_public
+fi
+
+#=================================================
+# CREATE DEDICATED USER
+#=================================================
+ynh_script_progression --message="Configuring system user..." --weight=1
+
+# Create a system user
+ynh_system_user_create --username=$app --home_dir="$final_path"
 
 #=================================================
 # STANDARD UPGRADE STEPS
@@ -76,23 +92,9 @@ then
 	ynh_setup_source --dest_dir="$final_path"
 fi
 
-#=================================================
-# DOWNLOAD, CHECK AND UNPACK SOURCE
-#=================================================
-# ynh_script_progression --message="Setting up source files..." --weight=7
-
-# ynh_app_setting_set --app=$app --key=final_path --value=$final_path
-# # Download, check integrity, uncompress and patch the source from app.src
-# #ynh_setup_source --dest_dir="$final_path"
-
-# # Copy source files
-# #src_path=/var/www/$app
-# mkdir -p $final_path
-# wget -q -P "$final_path" http://projekte.textmulch.de/bicbucstriim/downloads/BicBucStriim-1.3.6.zip -O "$final_path"/bbs.zip
-# unzip -q "$final_path"/bbs.zip -d "$final_path"
-# cp -R "$final_path"/BicBucStriim-1.3.6/* "$final_path"
-# rm "$final_path"/bbs.zip
-# rm -rf "$final_path"/BicBucStriim-1.3.6
+chmod 750 "$final_path"
+chmod -R o-rwx "$final_path"
+chown -R $app:www-data "$final_path"
 
 #=================================================
 # NGINX CONFIGURATION
@@ -103,40 +105,12 @@ ynh_script_progression --message="Configuring NGINX web server..." --weight=2
 ynh_add_nginx_config
 
 #=================================================
-# CREATE DEDICATED USER
-#=================================================
-ynh_script_progression --message="Configuring system user..." --weight=1
-
-# Create a system user
-ynh_system_user_create --username=$app
-
-#=================================================
 # PHP-FPM CONFIGURATION
 #=================================================
 ynh_script_progression --message="Upgrading PHP-FPM configuration..." --weight=2
 
 # Create a dedicated PHP-FPM config
-ynh_add_fpm_config --phpversion=$YNH_PHP_VERSION --package="$extra_php_dependencies"
-
-#=================================================
-# SECURE FILES AND DIRECTORIES
-#=================================================
-books_path=/home/$admin/calibre_library
-
-# Set permissions to app files
-chown -R root: $final_path
-#chmod -R ga+w $final_path/data
-#chown -R $admin "$books_path"
-
-#=================================================
-# SETUP SSOWAT
-#=================================================
-
-# If app is public, add url to SSOWat conf as skipped_uris
-if [[ $is_public -eq 1 ]]; then
-  # See install script
-  ynh_app_setting_set "$app" unprotected_uris "/"
-fi
+ynh_add_fpm_config --package="$extra_php_dependencies"
 
 #=================================================
 # GENERIC FINALIZATION

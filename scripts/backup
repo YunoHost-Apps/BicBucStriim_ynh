@@ -24,6 +24,7 @@ app=$YNH_APP_INSTANCE_NAME
 domain=$(ynh_app_setting_get --app=$app --key=domain)
 phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 admin=$(ynh_app_setting_get --app=$app --key=admin)
+phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 
 #=================================================
 # DECLARE DATA AND CONF FILES TO BACKUP
@@ -44,6 +45,13 @@ ynh_backup "$books_path" "data"
 #=================================================
 
 ynh_backup --src_path="/etc/nginx/conf.d/$domain.d/$app.conf"
+
+
+#=================================================
+# BACKUP THE PHP-FPM CONFIGURATION
+#=================================================
+
+ynh_backup --src_path="/etc/php/$phpversion/fpm/pool.d/$app.conf"
 
 #=================================================
 # END OF SCRIPT
