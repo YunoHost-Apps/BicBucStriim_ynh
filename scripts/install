@@ -92,11 +92,12 @@ phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 # SECURE FILES AND DIRECTORIES
 #=================================================
 
-cp ../conf/password.php $final_path/ynh_password.php
-cd $final_path
-hash=$(php ynh_password.php $password)
-rm ynh_password.php
-cd -
+#cp ../conf/password.php $final_path/ynh_password.php
+#cd $final_path
+#hash=$(php ynh_password.php $password)
+#rm ynh_password.php
+#cd -
+
 # mail=$(ynh_user_get_info $admin mail)
 # # if ! ynh_package_is_installed "sqlite3" ; then
 # #     ynh_package_install sqlite3
