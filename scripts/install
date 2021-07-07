@@ -89,24 +89,10 @@ ynh_add_fpm_config --package="$extra_php_dependencies"
 phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 
 #=================================================
-# SPECIFIC SETUP
-#=================================================
-# CONFIGURE BICBUCSTRIIM
-#=================================================
-
-books_path=/home/$admin/calibre_library
-cp -r ../empty_library $books_path
-
-# Disable BicBucStriim login if checked
-if [[ $login -eq 1 ]]; then
-  sed -i -- 's/\[LOGIN_REQUIRED\] = 1/\[LOGIN_REQUIRED\] = 0/g' "$final_path"/index.php
-fi
-
-#=================================================
 # SECURE FILES AND DIRECTORIES
 #=================================================
 
-cp password.php $final_path/ynh_password.php
+cp ../conf/password.php $final_path/ynh_password.php
 cd $final_path
 hash=$(php ynh_password.php $admin_pwd)
 rm ynh_password.php
@@ -131,11 +117,17 @@ datadir=/home/yunohost.app/$app
 ynh_app_setting_set --app=$app --key=datadir --value=$datadir
 
 mkdir -p $datadir
+cp -r ../empty_library $baradir
 
 chmod 750 "$datadir"
 #chmod -R o-rwx "$datadir"
 chown -R $app:www-data "$datadir"
 chmod -R ga+w "$datadir"
+
+# Disable BicBucStriim login if checked
+if [[ $login -eq 1 ]]; then
+  sed -i -- 's/\[LOGIN_REQUIRED\] = 1/\[LOGIN_REQUIRED\] = 0/g' $final_path/index.php
+fi
 
 #=================================================
 # SETUP SSOWAT
