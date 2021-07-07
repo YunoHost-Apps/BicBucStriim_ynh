@@ -35,28 +35,6 @@
                 "default": "/bbs"
             },
             {
-                "name": "admin",
-                "type": "user",
-                "example": "johndoe"
-            },
-            {
-                "name": "password",
-                "type": "password",
-                "ask": {
-                    "en": "Choose a password for the admin user",
-                    "fr": "Choisissez un mot de passe pour l’administrateur"
-                }
-            },
-            {
-                "name": "login",
-                "type": "boolean",
-                "ask": {
-                    "en": "Disable BicBucStriim login?",
-                    "fr": "Désactiver l'authentification BicBucStriim ?"
-                },
-                "default": true
-            },
-            {
                 "name": "is_public",
                 "type": "boolean",
                 "default": true
