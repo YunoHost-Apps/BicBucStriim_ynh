@@ -70,6 +70,7 @@ ynh_setup_source --dest_dir="$final_path"
 chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
+chmod -R ga+w "$final_path/data"
 
 #=================================================
 # NGINX CONFIGURATION
@@ -88,21 +89,6 @@ ynh_script_progression --message="Configuring PHP-FPM..." --weight=2
 ynh_add_fpm_config --package="$extra_php_dependencies"
 phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 
-#=================================================
-# CREATE DATA DIRECTORY
-#=================================================
-ynh_script_progression --message="Creating a data directory..." --weight=1
-
-datadir=/home/yunohost.app/$app
-ynh_app_setting_set --app=$app --key=datadir --value=$datadir
-
-mkdir -p $datadir
-cp -r ../empty_library $datadir
-
-chmod 750 "$datadir"
-#chmod -R o-rwx "$datadir"
-chown -R $app:www-data "$datadir"
-chmod -R ga+w "$datadir"
 
 # Disable BicBucStriim login if checked
 if [[ $login -eq 1 ]]; then
