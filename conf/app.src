@@ -2,5 +2,5 @@ SOURCE_URL=http://projekte.textmulch.de/bicbucstriim/downloads/BicBucStriim-1.5.
 SOURCE_SUM=13b4accb4dbf9212dbbe5154e24f8816c31e07d8becb7cb2003466a3d04de3ca
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=zip
-SOURCE_IN_SUBDIR=true
+SOURCE_IN_SUBDIR=false
 SOURCE_FILENAME=bbs
