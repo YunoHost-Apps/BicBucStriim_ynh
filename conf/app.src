@@ -1,5 +1,5 @@
-SOURCE_URL=http://projekte.textmulch.de/bicbucstriim/downloads/BicBucStriim-1.5.0.zip
-SOURCE_SUM=07e260cddcf893524fb87e376e1d4e2b0f0df395574aeb348cec5d3ac9245c43
+SOURCE_URL=http://projekte.textmulch.de/bicbucstriim/downloads/BicBucStriim-1.5.3.zip
+SOURCE_SUM=13b4accb4dbf9212dbbe5154e24f8816c31e07d8becb7cb2003466a3d04de3ca
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=zip
 SOURCE_IN_SUBDIR=true
