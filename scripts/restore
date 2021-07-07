@@ -27,6 +27,8 @@ domain=$(ynh_app_setting_get "$app" domain)
 path_url=$(ynh_app_setting_get --app=$app --key=path)
 admin=$(ynh_app_setting_get "$app" admin)
 phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
+datadir=$(ynh_app_setting_get --app=$app --key=datadir)
+final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 
 #=================================================
 # CHECK IF THE APP CAN BE RESTORED
@@ -71,7 +73,7 @@ chown -R $app:www-data "$final_path"
 
 # you may need to make some file and/or directory writeable by www-data (nginx user)
 chown -R root: "$final_path"
-chown -R $admin "$books_path"
+chown -R $admin "$datadir"
 
 #=================================================
 # RESTORE THE PHP-FPM CONFIGURATION
