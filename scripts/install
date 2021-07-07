@@ -94,7 +94,7 @@ phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 
 cp ../conf/password.php $final_path/ynh_password.php
 cd $final_path
-hash=$(php ynh_password.php $admin_pwd)
+hash=$(php ynh_password.php $password)
 rm ynh_password.php
 cd -
 # mail=$(ynh_user_get_info $admin mail)
