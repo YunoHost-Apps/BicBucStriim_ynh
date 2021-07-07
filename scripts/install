@@ -96,6 +96,15 @@ if [[ $login -eq 1 ]]; then
 fi
 
 #=================================================
+# HASH PASSWORD
+#=================================================
+
+cp ../conf/password.php $final_path/ynh_password.php
+cd $final_path
+hash=$(php${phpversion} ynh_password.php $password)
+rm ynh_password.php
+
+#=================================================
 # SETUP SSOWAT
 #=================================================
 ynh_script_progression --message="Configuring permissions..." --weight=1
