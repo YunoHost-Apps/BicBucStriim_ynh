@@ -123,6 +123,21 @@ cd -
 # # fi
 
 #=================================================
+# CREATE DATA DIRECTORY
+#=================================================
+ynh_script_progression --message="Creating a data directory..." --weight=1
+
+datadir=/home/yunohost.app/$app
+ynh_app_setting_set --app=$app --key=datadir --value=$datadir
+
+mkdir -p $datadir
+
+chmod 750 "$datadir"
+#chmod -R o-rwx "$datadir"
+chown -R $app:www-data "$datadir"
+chmod -R ga+w "$datadir"
+
+#=================================================
 # SETUP SSOWAT
 #=================================================
 ynh_script_progression --message="Configuring permissions..." --weight=1
@@ -130,8 +145,6 @@ ynh_script_progression --message="Configuring permissions..." --weight=1
 # Make app public if necessary
 if [ $is_public -eq 1 ]
 then
-  # Everyone can access the app.
-  # The "main" permission is automatically created before the install script.
   ynh_permission_update --permission="main" --add="visitors"
 fi
 
