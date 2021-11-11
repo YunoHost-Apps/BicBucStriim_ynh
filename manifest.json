@@ -3,17 +3,14 @@
     "id": "bicbucstriim",
     "packaging_format": 1,
     "description": {
-        "en": "Digital books streamer, providing web-based access to your e-book collection.",
-        "fr": "Interface web pour accéder à votre collection d'e-book."
+        "en": "Digital books streamer, providing web-based access to your e-book collection",
+        "fr": "Interface web pour accéder à votre collection d'e-book"
     },
     "version": "1.5.3~ynh1",
     "url": "http://projekte.textmulch.de/bicbucstriim/",
     "upstream": {
         "license": "MIT",
         "website": "http://projekte.textmulch.de/bicbucstriim/",
-        "demo": "https://demo.example.com",
-        "admindoc": "https://yunohost.org/packaging_apps",
-        "userdoc": "https://yunohost.org/apps",
         "code": "https://github.com/rvolz/BicBucStriim"
     },
     "license": "MIT",
@@ -33,8 +30,7 @@
         "install" : [
             {
                 "name": "domain",
-                "type": "domain",
-                "example": "example.com"
+                "type": "domain"
             },
             {
                 "name": "path",
