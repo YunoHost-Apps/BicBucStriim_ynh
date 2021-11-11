@@ -16,7 +16,7 @@ BicBucStriim is a simple PHP application that runs in the Apache/PHP environment
 
 **Version incluse :** 1.5.3~ynh1
 
-**Démo :** https://demo.example.com
+
 
 ## Captures d'écran
 
@@ -35,8 +35,6 @@ Une installation de BicBucStriim fraîchement installée affichera la page de co
 ## Documentations et ressources
 
 * Site officiel de l'app : http://projekte.textmulch.de/bicbucstriim/
-* Documentation officielle utilisateur : https://yunohost.org/apps
-* Documentation officielle de l'admin : https://yunohost.org/packaging_apps
 * Dépôt de code officiel de l'app : https://github.com/rvolz/BicBucStriim
 * Documentation YunoHost pour cette app : https://yunohost.org/app_bicbucstriim
 * Signaler un bug : https://github.com/YunoHost-Apps/bicbucstriim_ynh/issues
