@@ -15,19 +15,18 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 ## Overview
 
-Digital books streamer, providing web-based access to your e-book collection.
+BicBucStriim streams books, digital books. It was primarily designed to fill a gap in the functionality of NAS devices that provide access to music, videos and photos -- but not books. BicBucStriim fills this gap and provides web-based access to your e-book collection.
+BicBucStriim is a simple PHP application that runs in the Apache/PHP environment provided by the NAS (or any other server). It assumes that you manage your e-book collection with Calibre. The application reads the [Calibre](https://calibre-ebook.com/) data and publishes it in HTML form. To access the e-book catalog you simply point your ebook reader to your NAS, select one of your e-books and download it.
 
-**Shipped version:** 1.5.3~ynh1
+**Shipped version:** 1.5.3~ynh2
 
-**Demo:** https://demo.example.com
+
 
 ## Screenshots
 
 ![](./doc/screenshots/bbs-121-recent.png)
 
 ## Disclaimers / important information
-
-BicBucStriim is a simple PHP application that runs in the Apache/PHP environment provided by the NAS (or any other server). It assumes that you manage your e-book collection with Calibre. The application reads the [Calibre](https://calibre-ebook.com/) data and publishes it in HTML form. To access the e-book catalog you simply point your ebook reader to your NAS, select one of your e-books and download it.
 
 ## Configuration
 
@@ -42,8 +41,6 @@ If you encounter problems, use the installation test to check your environment. 
 ## Documentation and resources
 
 * Official app website: http://projekte.textmulch.de/bicbucstriim/
-* Official user documentation: https://yunohost.org/apps
-* Official admin documentation: https://yunohost.org/packaging_apps
 * Upstream app code repository: https://github.com/rvolz/BicBucStriim
 * YunoHost documentation for this app: https://yunohost.org/app_bicbucstriim
 * Report a bug: https://github.com/YunoHost-Apps/bicbucstriim_ynh/issues
