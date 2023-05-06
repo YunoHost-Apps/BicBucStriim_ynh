@@ -1,0 +1,53 @@
+packaging_format = 2
+
+id = "bicbucstriim"
+name = "BicBucStriim"
+description.en = "Digital books streamer, providing web-based access to your e-book collection"
+description.fr = "Interface web pour accéder à votre collection d'e-book"
+
+version = "1.5.3~ynh2"
+
+maintainers = ["Alex"]
+
+[upstream]
+license = "MIT"
+website = "http://projekte.textmulch.de/bicbucstriim/"
+code = "https://github.com/rvolz/BicBucStriim"
+
+[integration]
+yunohost = ">= 11.1.18"
+architectures = "all"
+multi_instance = true
+ldap = false
+sso = false
+disk = "50M"
+ram.build = "50M"
+ram.runtime = "50M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.path]
+    type = "path"
+    default = "/bbs"
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+[resources]
+        [resources.sources.main]
+        url = "http://projekte.textmulch.de/bicbucstriim/downloads/BicBucStriim-1.5.3.zip"
+        sha256 = "f64c4aa72f906ae99c99f3397527d9b71f73d11651fa37fe87049013da581c8a"
+        in_subdir = false
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.apt]
+    packages = "php7.4-gd php7.4-intl php7.4-sqlite3 php7.4-mbstring"
