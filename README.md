@@ -25,21 +25,8 @@ BicBucStriim is a simple PHP application that runs in the Apache/PHP environment
 
 ![Screenshot of BicBucStriim](./doc/screenshots/bbs-121-recent.png)
 
-## Disclaimers / important information
-
-## Configuration
-
-A freshly installed BicBucStriim installation will show the login page. The initial login information for the administrator is
-
-    user name: admin
-    password : admin
-
-## Troubleshooting
-
-If you encounter problems, use the installation test to check your environment. Invoke this test by navigating to `http://domain.ltd/bbs/installcheck.php`. This test checks for problems that users experienced in the past.
 ## Documentation and resources
 
-* Official app website: <http://projekte.textmulch.de/bicbucstriim/>
 * Upstream app code repository: <https://github.com/mikespub-org/rvolz-BicBucStriim>
 * YunoHost documentation for this app: <https://yunohost.org/app_bicbucstriim>
 * Report a bug: <https://github.com/YunoHost-Apps/bicbucstriim_ynh/issues>
