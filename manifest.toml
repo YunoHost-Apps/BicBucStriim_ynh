@@ -38,8 +38,8 @@ ram.runtime = "50M"
 
 [resources]
         [resources.sources.main]
-        url = "http://projekte.textmulch.de/bicbucstriim/downloads/BicBucStriim-1.5.3.zip"
-        sha256 = "f64c4aa72f906ae99c99f3397527d9b71f73d11651fa37fe87049013da581c8a"
+        url = "https://github.com/mikespub-org/rvolz-BicBucStriim/releases/download/v1.6.5/bicbucstriim-1.6.5.zip"
+        sha256 = "8cd516fd25253a0aee2c047706164686f175fd23730462eb424196d0bb102b35"
         in_subdir = false
 
     [resources.system_user]
