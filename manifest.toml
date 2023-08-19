@@ -14,7 +14,7 @@ license = "MIT"
 code = "https://github.com/mikespub-org/rvolz-BicBucStriim"
 
 [integration]
-yunohost = ">> 11.2"
+yunohost = ">= 11.2"
 architectures = "all"
 multi_instance = true
 ldap = false
