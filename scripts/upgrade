@@ -107,7 +107,7 @@ ynh_install_app_dependencies $pkg_dependencies
 ynh_script_progression --message="Upgrading PHP-FPM configuration..." --weight=2
 
 # Create a dedicated PHP-FPM config
-ynh_add_fpm_config
+ynh_add_fpm_config --usage=low --footprint=low
 
 #=================================================
 # GENERIC FINALIZATION
