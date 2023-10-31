@@ -5,7 +5,8 @@ It shall NOT be edited by hand.
 
 # BicBucStriim for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/bicbucstriim.svg)](https://dash.yunohost.org/appci/app/bicbucstriim) ![](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/bicbucstriim.svg)](https://dash.yunohost.org/appci/app/bicbucstriim) ![Working status](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.maintain.svg)
+
 [![Install BicBucStriim with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=bicbucstriim)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -20,11 +21,9 @@ BicBucStriim is a simple PHP application that runs in the Apache/PHP environment
 
 **Shipped version:** 1.5.3~ynh2
 
-
-
 ## Screenshots
 
-![](./doc/screenshots/bbs-121-recent.png)
+![Screenshot of BicBucStriim](./doc/screenshots/bbs-121-recent.png)
 
 ## Disclaimers / important information
 
@@ -40,20 +39,21 @@ A freshly installed BicBucStriim installation will show the login page. The init
 If you encounter problems, use the installation test to check your environment. Invoke this test by navigating to `http://domain.ltd/bbs/installcheck.php`. This test checks for problems that users experienced in the past.
 ## Documentation and resources
 
-* Official app website: http://projekte.textmulch.de/bicbucstriim/
-* Upstream app code repository: https://github.com/rvolz/BicBucStriim
-* YunoHost documentation for this app: https://yunohost.org/app_bicbucstriim
-* Report a bug: https://github.com/YunoHost-Apps/bicbucstriim_ynh/issues
+* Official app website: <http://projekte.textmulch.de/bicbucstriim/>
+* Upstream app code repository: <https://github.com/rvolz/BicBucStriim>
+* YunoHost Store: <https://apps.yunohost.org/app/bicbucstriim>
+* Report a bug: <https://github.com/YunoHost-Apps/bicbucstriim_ynh/issues>
 
 ## Developer info
 
 Please send your pull request to the [testing branch](https://github.com/YunoHost-Apps/bicbucstriim_ynh/tree/testing).
 
 To try the testing branch, please proceed like that.
-```
+
+``` bash
 sudo yunohost app install https://github.com/YunoHost-Apps/bicbucstriim_ynh/tree/testing --debug
 or
 sudo yunohost app upgrade bicbucstriim -u https://github.com/YunoHost-Apps/bicbucstriim_ynh/tree/testing --debug
 ```
 
-**More info regarding app packaging:** https://yunohost.org/packaging_apps
+**More info regarding app packaging:** <https://yunohost.org/packaging_apps>
