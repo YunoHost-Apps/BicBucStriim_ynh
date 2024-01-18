@@ -25,7 +25,6 @@ if [ "$upgrade_type" == "UPGRADE_APP" ]
 then
 	ynh_script_progression --message="Upgrading source files..." --weight=7
 
-	# Download, check integrity, uncompress and patch the source from app.src
 	ynh_setup_source --dest_dir="$install_dir"
 fi
 
@@ -38,11 +37,9 @@ chmod -R ga+w "$install_dir/data"
 #=================================================
 ynh_script_progression --message="Configuring NGINX web server..." --weight=2
 
-# Create a dedicated NGINX config
 ynh_add_nginx_config
 
-# Create a dedicated PHP-FPM config
-ynh_add_fpm_config --usage=low --footprint=low
+ynh_add_fpm_config
 
 #=================================================
 # END OF SCRIPT
