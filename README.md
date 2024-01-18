@@ -28,7 +28,7 @@ BicBucStriim is a simple PHP application that runs in the Apache/PHP environment
 ## Documentation and resources
 
 * Upstream app code repository: <https://github.com/mikespub-org/rvolz-BicBucStriim>
-* YunoHost documentation for this app: <https://yunohost.org/app_bicbucstriim>
+* YunoHost Store: <https://apps.yunohost.org/app/bicbucstriim>
 * Report a bug: <https://github.com/YunoHost-Apps/bicbucstriim_ynh/issues>
 
 ## Developer info
