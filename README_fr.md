@@ -28,7 +28,7 @@ BicBucStriim est une application PHP simple qui s'exécute dans l'environnement 
 ## Documentations et ressources
 
 * Dépôt de code officiel de l’app : <https://github.com/mikespub-org/rvolz-BicBucStriim>
-* Documentation YunoHost pour cette app : <https://yunohost.org/app_bicbucstriim>
+* YunoHost Store: <https://apps.yunohost.org/app/bicbucstriim>
 * Signaler un bug : <https://github.com/YunoHost-Apps/bicbucstriim_ynh/issues>
 
 ## Informations pour les développeurs
