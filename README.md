@@ -41,7 +41,7 @@ If you encounter problems, use the installation test to check your environment. 
 
 * Official app website: <http://projekte.textmulch.de/bicbucstriim/>
 * Upstream app code repository: <https://github.com/rvolz/BicBucStriim/>
-* YunoHost documentation for this app: <https://yunohost.org/app_bicbucstriim>
+* YunoHost Store: <https://apps.yunohost.org/app/bicbucstriim>
 * Report a bug: <https://github.com/YunoHost-Apps/bicbucstriim_ynh/issues>
 
 ## Developer info

@@ -39,7 +39,7 @@ Une installation de BicBucStriim fraîchement installée affichera la page de co
 
 * Site officiel de l’app : <http://projekte.textmulch.de/bicbucstriim/>
 * Dépôt de code officiel de l’app : <https://github.com/rvolz/BicBucStriim/>
-* Documentation YunoHost pour cette app : <https://yunohost.org/app_bicbucstriim>
+* YunoHost Store: <https://apps.yunohost.org/app/bicbucstriim>
 * Signaler un bug : <https://github.com/YunoHost-Apps/bicbucstriim_ynh/issues>
 
 ## Informations pour les développeurs
