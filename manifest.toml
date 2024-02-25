@@ -1,0 +1,59 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
+packaging_format = 2
+
+id = "bicbucstriim"
+name = "BicBucStriim"
+description.en = "Digital books streamer, providing web-based access to your e-book collection"
+description.fr = "Interface web pour accéder à votre collection d'e-book"
+
+version = "1.5.3~ynh3"
+
+maintainers = ["Alex"]
+
+[upstream]
+license = "MIT"
+website = "http://projekte.textmulch.de/bicbucstriim/"
+code = "https://github.com/rvolz/BicBucStriim/"
+
+[integration]
+yunohost = ">= 11.2"
+architectures = "all"
+multi_instance = true
+ldap = false
+sso = false
+disk = "50M"
+ram.build = "50M"
+ram.runtime = "50M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.path]
+    type = "path"
+    default = "/bbs"
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+[resources]
+    [resources.sources.main]
+    url = "https://github.com/rvolz/BicBucStriim/archive/refs/tags/v1.5.3.zip"
+    sha256 = "32b922c2d385a15ba71e1f2935017cc9269f95c60038c5e1b62caecbe4fa5bca"
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.apt]
+    packages = [
+        "php7.4-gd",
+        "php7.4-intl",
+        "php7.4-sqlite3",
+        "php7.4-mbstring",
+    ]
