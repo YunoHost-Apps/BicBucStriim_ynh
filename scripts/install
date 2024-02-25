@@ -18,7 +18,7 @@ ynh_setup_source --dest_dir="$install_dir"
 
 chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
-chmod -R ga+w "$install_dir/data"
+# chmod -R ga+w "$install_dir/data"
 
 #=================================================
 # NGINX CONFIGURATION
