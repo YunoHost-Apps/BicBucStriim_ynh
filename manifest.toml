@@ -7,7 +7,7 @@ name = "BicBucStriim"
 description.en = "Digital books streamer, providing web-based access to your e-book collection"
 description.fr = "Interface web pour accéder à votre collection d'e-book"
 
-version = "1.5.3~ynh3"
+version = "1.5.3~ynh4"
 
 maintainers = ["Alex"]
 
