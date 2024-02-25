@@ -75,7 +75,7 @@ ynh_setup_source --dest_dir="$final_path"
 chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
-chmod -R ga+w "$final_path/data"
+#chmod -R ga+w "$final_path/data"
 
 #=================================================
 # NGINX CONFIGURATION
@@ -91,7 +91,7 @@ ynh_add_nginx_config
 ynh_script_progression --message="Configuring PHP-FPM..." --weight=2
 
 # Create a dedicated PHP-FPM config
-ynh_add_fpm_config
+ynh_add_fpm_config --usage=low --footprint=low
 
 #=================================================
 # SETUP SSOWAT

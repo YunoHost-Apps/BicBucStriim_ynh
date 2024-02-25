@@ -6,12 +6,12 @@
         "en": "Digital books streamer, providing web-based access to your e-book collection",
         "fr": "Interface web pour accéder à votre collection d'e-book"
     },
-    "version": "1.5.3~ynh2",
+    "version": "1.5.3~ynh3",
     "url": "http://projekte.textmulch.de/bicbucstriim/",
     "upstream": {
         "license": "MIT",
         "website": "http://projekte.textmulch.de/bicbucstriim/",
-        "code": "https://github.com/rvolz/BicBucStriim"
+        "code": "https://github.com/rvolz/BicBucStriim/"
     },
     "license": "MIT",
     "maintainer": {
@@ -19,12 +19,12 @@
         "email": "apulido@free.fr"
     },
     "requirements": {
-        "yunohost": ">> 4.3.0"
+        "yunohost": ">> 11.2"
     },
     "multi_instance": true,
     "services": [
         "nginx",
-        "php7.3-fpm"
+        "php7.4-fpm"
     ],
     "arguments": {
         "install" : [
