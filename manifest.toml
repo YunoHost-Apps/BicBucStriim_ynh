@@ -19,11 +19,8 @@ code = "https://github.com/mikespub-org/rvolz-BicBucStriim"
 yunohost = ">= 11.2"
 architectures = "all"
 multi_instance = true
-
 ldap = false
-
 sso = false
-
 disk = "50M"
 ram.build = "50M"
 ram.runtime = "50M"
@@ -59,5 +56,4 @@ ram.runtime = "50M"
         "php7.4-xml",
         "php7.4-sqlite3",
         "php7.4-mbstring",
-        "php7.4-mcrypt",
     ]
