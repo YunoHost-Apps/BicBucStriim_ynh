@@ -1,3 +1,5 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
 packaging_format = 2
 
 id = "bicbucstriim"
@@ -39,10 +41,9 @@ ram.runtime = "50M"
     default = "visitors"
 
 [resources]
-        [resources.sources.main]
-        url = "https://github.com/mikespub-org/rvolz-BicBucStriim/releases/download/v1.6.5/bicbucstriim-1.6.5.zip"
-        sha256 = "8cd516fd25253a0aee2c047706164686f175fd23730462eb424196d0bb102b35"
-        in_subdir = false
+    [resources.sources.main]
+    url = "https://github.com/mikespub-org/rvolz-BicBucStriim/releases/download/v1.6.5/bicbucstriim-1.6.5.zip"
+    sha256 = "8cd516fd25253a0aee2c047706164686f175fd23730462eb424196d0bb102b35"
 
     [resources.system_user]
 
