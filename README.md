@@ -19,7 +19,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 BicBucStriim is a simple PHP application that runs in the Apache/PHP environment provided by the NAS (or any other server). It assumes that you manage your e-book collection with Calibre. The application reads the [Calibre](https://calibre-ebook.com/) data and publishes it in HTML form. To access the e-book catalog you simply point your ebook reader to your NAS, select one of your e-books and download it.
 
 
-**Shipped version:** 1.5.3~ynh4
+**Shipped version:** 1.6.5~ynh1
 
 ## Screenshots
 
@@ -27,8 +27,7 @@ BicBucStriim is a simple PHP application that runs in the Apache/PHP environment
 
 ## Documentation and resources
 
-* Official app website: <http://projekte.textmulch.de/bicbucstriim/>
-* Upstream app code repository: <https://github.com/rvolz/BicBucStriim/>
+* Upstream app code repository: <https://github.com/mikespub-org/rvolz-BicBucStriim>
 * YunoHost Store: <https://apps.yunohost.org/app/bicbucstriim>
 * Report a bug: <https://github.com/YunoHost-Apps/bicbucstriim_ynh/issues>
 
