@@ -7,14 +7,13 @@ name = "BicBucStriim"
 description.en = "Digital books streamer, providing web-based access to your e-book collection"
 description.fr = "Interface web pour accéder à votre collection d'e-book"
 
-version = "1.5.3~ynh4"
+version = "1.6.5~ynh1"
 
 maintainers = ["Alex"]
 
 [upstream]
 license = "MIT"
-website = "http://projekte.textmulch.de/bicbucstriim/"
-code = "https://github.com/rvolz/BicBucStriim/"
+code = "https://github.com/mikespub-org/rvolz-BicBucStriim"
 
 [integration]
 yunohost = ">= 11.2"
@@ -40,8 +39,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/rvolz/BicBucStriim/archive/refs/tags/v1.5.3.zip"
-    sha256 = "32b922c2d385a15ba71e1f2935017cc9269f95c60038c5e1b62caecbe4fa5bca"
+    url = "https://github.com/mikespub-org/rvolz-BicBucStriim/releases/download/v1.6.5/bicbucstriim-1.6.5.zip"
+    sha256 = "8cd516fd25253a0aee2c047706164686f175fd23730462eb424196d0bb102b35"
 
     [resources.system_user]
 
@@ -54,6 +53,7 @@ ram.runtime = "50M"
     packages = [
         "php7.4-gd",
         "php7.4-intl",
+        "php7.4-xml",
         "php7.4-sqlite3",
         "php7.4-mbstring",
     ]
