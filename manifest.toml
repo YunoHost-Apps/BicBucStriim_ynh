@@ -44,6 +44,7 @@ ram.runtime = "50M"
     [resources.sources.main]
     url = "https://github.com/mikespub-org/rvolz-BicBucStriim/releases/download/v3.3.0/bicbucstriim-3.3.0.zip"
     sha256 = "c7708f134ef1c4827e24d06141684befadd3a025405d9f35128221f4ef8beda6"
+    in_subdir = false
 
     [resources.system_user]
 
