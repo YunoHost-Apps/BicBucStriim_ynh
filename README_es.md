@@ -19,7 +19,7 @@ No se debe editar a mano.
 BicBucStriim is a simple PHP application that runs in the Apache/PHP environment provided by the NAS (or any other server). It assumes that you manage your e-book collection with Calibre. The application reads the [Calibre](https://calibre-ebook.com/) data and publishes it in HTML form. To access the e-book catalog you simply point your ebook reader to your NAS, select one of your e-books and download it.
 
 
-**Versión actual:** 1.6.5~ynh1
+**Versión actual:** 3.3.0~ynh1
 
 ## Capturas
 
