@@ -3,7 +3,7 @@
 请勿手动编辑。
 -->
 
-# YunoHost 的 BicBucStriim
+# YunoHost 上的 BicBucStriim
 
 [![集成程度](https://dash.yunohost.org/integration/bicbucstriim.svg)](https://dash.yunohost.org/appci/app/bicbucstriim) ![工作状态](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.maintain.svg)
 
