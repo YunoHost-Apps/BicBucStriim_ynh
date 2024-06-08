@@ -54,9 +54,9 @@ ram.runtime = "50M"
 
     [resources.apt]
     packages = [
-        "php8.0-gd",
-        "php8.0-intl",
-        "php8.0-xml",
-        "php8.0-sqlite3",
-        "php8.0-mbstring",
+        "php7.4-gd",
+        "php7.4-intl",
+        "php7.4-xml",
+        "php7.4-sqlite3",
+        "php7.4-mbstring",
     ]
