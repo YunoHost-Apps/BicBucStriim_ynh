@@ -5,7 +5,7 @@ EZ editatu eskuz.
 
 # BicBucStriim YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/bicbucstriim.svg)](https://dash.yunohost.org/appci/app/bicbucstriim) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.maintain.svg)
+[![Integrazio maila](https://dash.yunohost.org/integration/bicbucstriim.svg)](https://ci-apps.yunohost.org/ci/apps/bicbucstriim/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.maintain.svg)
 
 [![Instalatu BicBucStriim YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=bicbucstriim)
 
@@ -19,7 +19,7 @@ EZ editatu eskuz.
 BicBucStriim is a simple PHP application that runs in the Apache/PHP environment provided by the NAS (or any other server). It assumes that you manage your e-book collection with Calibre. The application reads the [Calibre](https://calibre-ebook.com/) data and publishes it in HTML form. To access the e-book catalog you simply point your ebook reader to your NAS, select one of your e-books and download it.
 
 
-**Paketatutako bertsioa:** 3.3.0~ynh2
+**Paketatutako bertsioa:** 3.5.2~ynh1
 
 ## Pantaila-argazkiak
 
