@@ -46,6 +46,9 @@ ram.runtime = "50M"
     sha256 = "1a6670edbd56043dc6a4e16ab779ebbc8aada9489eaec9630cbc6b7eef769906"
     in_subdir = false
 
+    autoupdate.strategy = "latest_github_release"
+    autoupdate.asset = "bicbucstriim-.*.zip"
+
     [resources.system_user]
 
     [resources.install_dir]
