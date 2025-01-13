@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # BicBucStriim YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/bicbucstriim.svg)](https://ci-apps.yunohost.org/ci/apps/bicbucstriim/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/bicbucstriim)](https://ci-apps.yunohost.org/ci/apps/bicbucstriim/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/bicbucstriim)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/bicbucstriim)
 
 [![Instalatu BicBucStriim YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=bicbucstriim)
 

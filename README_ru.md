@@ -5,7 +5,9 @@
 
 # BicBucStriim для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/bicbucstriim.svg)](https://ci-apps.yunohost.org/ci/apps/bicbucstriim/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.maintain.svg)
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/bicbucstriim)](https://ci-apps.yunohost.org/ci/apps/bicbucstriim/)
+![Состояние работы](https://apps.yunohost.org/badge/state/bicbucstriim)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/bicbucstriim)
 
 [![Установите BicBucStriim с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=bicbucstriim)
 
