@@ -7,7 +7,7 @@ name = "BicBucStriim"
 description.en = "Digital books streamer, providing web-based access to your e-book collection"
 description.fr = "Interface Web pour accéder à votre collection d'e-book"
 
-version = "3.5.2~ynh1"
+version = "3.5.2~ynh2"
 
 maintainers = ["Alex"]
 
@@ -16,7 +16,7 @@ license = "MIT"
 code = "https://github.com/mikespub-org/rvolz-BicBucStriim"
 
 [integration]
-yunohost = ">= 11.2.30"
+yunohost = ">= 12.0.9"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
