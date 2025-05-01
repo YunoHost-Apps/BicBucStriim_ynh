@@ -5,7 +5,9 @@ It shall NOT be edited by hand.
 
 # BicBucStriim for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/bicbucstriim.svg)](https://ci-apps.yunohost.org/ci/apps/bicbucstriim/) ![Working status](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.maintain.svg)
+[![Integration level](https://apps.yunohost.org/badge/integration/bicbucstriim)](https://ci-apps.yunohost.org/ci/apps/bicbucstriim/)
+![Working status](https://apps.yunohost.org/badge/state/bicbucstriim)
+![Maintenance status](https://apps.yunohost.org/badge/maintained/bicbucstriim)
 
 [![Install BicBucStriim with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=bicbucstriim)
 

@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # BicBucStriim untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/bicbucstriim.svg)](https://ci-apps.yunohost.org/ci/apps/bicbucstriim/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/bicbucstriim.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/bicbucstriim)](https://ci-apps.yunohost.org/ci/apps/bicbucstriim/)
+![Status kerja](https://apps.yunohost.org/badge/state/bicbucstriim)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/bicbucstriim)
 
 [![Pasang BicBucStriim dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=bicbucstriim)
 
