@@ -10,7 +10,7 @@ It shall NOT be edited by hand.
 
 Digital books streamer, providing web-based access to your e-book collection
 
-[![Version: 3.5.2~ynh2](https://img.shields.io/badge/Version-3.5.2~ynh2-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/bicbucstriim/)
+[![Version: 3.6.3~ynh1](https://img.shields.io/badge/Version-3.6.3~ynh1-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/bicbucstriim/)
 
 <div align="center">
 <a href="https://apps.yunohost.org/app/bicbucstriim"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>
