@@ -7,7 +7,7 @@ name = "BicBucStriim"
 description.en = "Digital books streamer, providing web-based access to your e-book collection"
 description.fr = "Interface Web pour accéder à votre collection d'e-book"
 
-version = "3.6.7~ynh1"
+version = "4.0.1~ynh1"
 
 maintainers = ["Alex"]
 
@@ -42,8 +42,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/mikespub-org/rvolz-BicBucStriim/releases/download/v3.6.7/bicbucstriim-3.6.7-php82.zip"
-    sha256 = "e4ff7c4ce1c52b583439a073f40e1d5c8bf95b54187ff66ab5ff1e9fff7e2dfc"
+    url = "https://github.com/mikespub-org/rvolz-BicBucStriim/releases/download/v4.0.1/bicbucstriim-4.0.1-php84.zip"
+    sha256 = "ac5d6524d1cf084c1e0ee8719353d9b8f0cee51e3e9f2355346be437cbd5717d"
     in_subdir = false
 
     autoupdate.strategy = "latest_github_release"
@@ -59,10 +59,10 @@ ram.runtime = "50M"
 
     [resources.apt]
     packages = [
-        "php8.2-gd",
-        "php8.2-intl",
-        "php8.2-xml",
-        "php8.2-sqlite3",
-        "php8.2-mbstring",
-        "php8.2-apcu",
+        "php8.4-gd",
+        "php8.4-intl",
+        "php8.4-xml",
+        "php8.4-sqlite3",
+        "php8.4-mbstring",
+        "php8.4-apcu",
     ]
