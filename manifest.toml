@@ -7,7 +7,7 @@ name = "BicBucStriim"
 description.en = "Digital books streamer, providing web-based access to your e-book collection"
 description.fr = "Interface Web pour accéder à votre collection d'e-book"
 
-version = "4.1.4~ynh1"
+version = "4.2.1~ynh1"
 
 maintainers = ["Alex"]
 
@@ -42,8 +42,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/mikespub-org/rvolz-BicBucStriim/releases/download/v4.1.4/bicbucstriim-4.1.4-php84.zip"
-    sha256 = "2ca56e88a8b5a13d3c74f624a7785f7ff2d8f3c47136dd52fc410bca72be5b69"
+    url = "https://github.com/mikespub-org/rvolz-BicBucStriim/releases/download/v4.2.1/bicbucstriim-4.2.1-php84.zip"
+    sha256 = "4284131e887eaf90bebafabddedebbb067d37e2013af6c7774a007afe73044df"
     in_subdir = false
 
     autoupdate.strategy = "latest_github_release"
